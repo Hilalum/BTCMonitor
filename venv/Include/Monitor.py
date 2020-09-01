@@ -1,4 +1,4 @@
-def timer(n):
+def price_monitor(n):
     while True:
         url = "https://sochain.com/api/v2/get_price/BTC/USD"
         res = json.loads(requests.get(url=url).text)
