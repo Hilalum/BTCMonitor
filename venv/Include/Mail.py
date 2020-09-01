@@ -25,9 +25,9 @@ html = """
 msg = MIMEText(html,_subtype='html', _charset='utf-8')
 msg['Subject'] = subject
 msg['From'] = sender
-msg['To'] = ";".join(receiver)
 
-def register_mail():
+def register_mail(receiver):
+    msg['To']=receiver
     smtp = smtplib.SMTP()
     smtp.connect(smtpserver)
     smtp.login(username, password)

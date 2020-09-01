@@ -14,5 +14,5 @@ def register():
         return json.dumps(res, ensure_ascii=False)
     insert_register(username,tax,weekmoney,email,pwd)
     res = {'msg':'注册成功'}
-    register_mail();
+    register_mail(email);
     return json.dumps(res,ensure_ascii=False)
