@@ -1,6 +1,8 @@
-def price_monitor(n):
+from Include.GlobalValues import price,url,sleep_times
+import json,requests,datetime,time
+def price_monitor():
+    global price,sleep_times,url
     while True:
-        url = "https://sochain.com/api/v2/get_price/BTC/USD"
         res = json.loads(requests.get(url=url).text)
         if(res['status'].strip() == 'success'):
             for i in res['data']['prices']:
@@ -8,6 +10,6 @@ def price_monitor(n):
                     price = float(i['price'])
                 else:
                     price = (price + float(i['price'])) / 2
-        print(datetime.now().strftime("%Y-%m-%d  %H:%M:%S"))
+        print(datetime.datetime.now().strftime("%Y-%m-%d  %H:%M:%S"))
         print(price)
-        time.sleep(n)
+        time.sleep(sleep_times)

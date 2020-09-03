@@ -14,5 +14,7 @@ def register():
         return json.dumps(res, ensure_ascii=False)
     insert_register(username,tax,weekmoney,email,pwd)
     res = {'msg':'注册成功'}
-    register_mail(email);
+    register_mail(email)
     return json.dumps(res,ensure_ascii=False)
+def flask_run(p,d):
+    server.run(port=p, debug=d)

@@ -1,9 +1,11 @@
-
-from Include.Controller import server
+import threading
+from Include.Controller import server, flask_run
 from Include.Sqllite import init_sql
 from Include.Monitor import *
 if __name__ == '__main__':
     init_sql()
-    server.run(port=8888, debug=True)
-    price_monitor(5)
+    t = threading.Thread(target=price_monitor,args=())
+    t.setDaemon(True)
+    t.start()
+    flask_run(8888, True)
 
