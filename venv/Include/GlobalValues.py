@@ -5,18 +5,17 @@ smtpserver = 'smtp.88.com'
 username = 'BTCMonitor@88.com'
 password='PDhdeFNCnVzuzHWt'
 sender='BTCMonitor@88.com'
-register_html = """
+register_html1 = """
     <p style="text-align: center;font-weight:bold;font-size:35px;"><br><br>
     Hi<br>  
        恭喜你<br>  
        成功注册BTCMonitor账户！<br> 
-       <br><br><br><br>
-    </p> 
+       当前BTC价格为$
 """
+register_html2 = """,祝你好运！<br> 
+       <br><br><br><br>
+    </p> """
 register_subject = '注册成功'
-register_msg = MIMEText(register_html,_subtype='html', _charset='utf-8')
-register_msg['Subject'] = register_subject
-register_msg['From'] = sender
 
 
 #接口配置
