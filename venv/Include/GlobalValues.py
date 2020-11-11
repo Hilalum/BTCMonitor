@@ -1,5 +1,6 @@
 from email.mime.text import MIMEText
-price = 0
+import queue
+price = queue.Queue()
 #邮件配置
 smtpserver = 'smtp.88.com'
 username = 'BTCMonitor@88.com'

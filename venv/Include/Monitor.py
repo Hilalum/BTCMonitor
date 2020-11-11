@@ -1,15 +1,16 @@
-from Include.GlobalValues import price,url,sleep_times
+from Include.GlobalValues import url,sleep_times
 import json,requests,datetime,time
-def price_monitor():
-    global price,sleep_times,url
+def price_monitor(price):
+    global sleep_times,url
     while True:
+        p = price.get()
         res = json.loads(requests.get(url=url).text)
         if(res['status'].strip() == 'success'):
             for i in res['data']['prices']:
-                if price == 0:
-                    price = float(i['price'])
+                if p == 0:
+                    price.put(float(i['price']))
                 else:
-                    price = (price + float(i['price'])) / 2
+                    price.put((p + float(i['price'])) / 2)
         print(datetime.datetime.now().strftime("%Y-%m-%d  %H:%M:%S"))
-        print(price)
+        print(p)
         time.sleep(sleep_times)

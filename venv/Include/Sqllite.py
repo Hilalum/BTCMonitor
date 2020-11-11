@@ -18,7 +18,7 @@ def init_sql():
     conn.close()
 def insert_register(USERNAME, TAX,WEEKMONEY,EMAIL,PASSWORD):
     conn = sqlite3.connect('test.db')
-    BASE=price
+    BASE=price.get()
     c = conn.cursor()
     c.execute("INSERT INTO BTC (USERNAME, BASE,WEEKMONEY,EMAIL,PASSWORD,TAX) VALUES ('%s', '%s','%s','%s','%s','%s');"%(USERNAME,BASE,WEEKMONEY,EMAIL,PASSWORD,TAX))
     conn.commit()
