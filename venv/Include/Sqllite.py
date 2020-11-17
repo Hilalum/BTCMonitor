@@ -26,6 +26,16 @@ def insert_register(USERNAME, TAX, WEEKMONEY, EMAIL, PASSWORD):
     c = conn.cursor()
     c.execute(
         "INSERT INTO BTC (USERNAME, BASE,WEEKMONEY,EMAIL,PASSWORD,TAX) VALUES ('%s', '%s','%s','%s','%s','%s');" % (
-        USERNAME, BASE, WEEKMONEY, EMAIL, PASSWORD, TAX))
+            USERNAME, BASE, WEEKMONEY, EMAIL, PASSWORD, TAX))
+    conn.commit()
+    conn.close()
+
+
+def update(USERNAME, TAX, WEEKMONEY, EMAIL, PASSWORD):
+    conn = sqlite3.connect('test.db')
+    c = conn.cursor()
+    c.execute(
+        "UPDATE BTC set WEEKMONEY = '%s',EMAIL= '%s',TAX='%s' where USERNAME = '%s' and PASSWORD = '%s';" % (
+            WEEKMONEY, EMAIL, TAX, USERNAME, PASSWORD))
     conn.commit()
     conn.close()

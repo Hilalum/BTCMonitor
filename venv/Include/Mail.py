@@ -15,3 +15,15 @@ def register_mail(receiver):
     smtp.login(username, password)
     smtp.sendmail(sender, receiver, register_msg.as_string())
     smtp.quit()
+
+
+def update_mail(receiver):
+    update_msg = MIMEText(update_html, _subtype='html', _charset='utf-8')
+    update_msg['Subject'] = update_subject
+    update_msg['From'] = sender
+    update_msg['To'] = receiver
+    smtp = smtplib.SMTP()
+    smtp.connect(smtpserver)
+    smtp.login(username, password)
+    smtp.sendmail(sender, receiver, update_msg.as_string())
+    smtp.quit()

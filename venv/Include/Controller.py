@@ -21,5 +21,21 @@ def register():
     return json.dumps(res, ensure_ascii=False)
 
 
+@server.route('/update', methods=['get'])
+def update():
+    username = flask.request.values.get('username', type=str, default='')
+    pwd = flask.request.values.get('pwd', type=str, default='')
+    email = flask.request.values.get('email', type=str, default='')
+    tax = flask.request.values.get('tax', type=str, default='')
+    weekmoney = flask.request.values.get('weekmoney', type=str, default='')
+    if username == '' or pwd == '':
+        res = {'msg': '缺失参数'}
+        return json.dumps(res, ensure_ascii=False)
+    insert_register(username, tax, weekmoney, email, pwd)
+    res = {'msg': '修改成功'}
+    update_mail(email)
+    return json.dumps(res, ensure_ascii=False)
+
+
 def flask_run(p, d):
     server.run(port=p, debug=d)
