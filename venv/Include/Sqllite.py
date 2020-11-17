@@ -20,6 +20,17 @@ def init_sql():
     conn.close()
 
 
+def check_username(USERNAME):
+    conn = sqlite3.connect('test.db')
+    BASE = price.get()
+    c = conn.cursor()
+    c.execute(
+        "select * from BTC where USERNAME = '%s';" % (USERNAME))
+    n = c.rowcount
+    conn.commit()
+    conn.close()
+
+
 def insert_register(USERNAME, TAX, WEEKMONEY, EMAIL, PASSWORD):
     conn = sqlite3.connect('test.db')
     BASE = price.get()
