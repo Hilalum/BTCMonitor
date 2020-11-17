@@ -1,5 +1,7 @@
 import sqlite3
 from Include.GlobalValues import price
+
+
 def init_sql():
     conn = sqlite3.connect('test.db')
     c = conn.cursor()
@@ -16,10 +18,14 @@ def init_sql():
            );''')
     conn.commit()
     conn.close()
-def insert_register(USERNAME, TAX,WEEKMONEY,EMAIL,PASSWORD):
+
+
+def insert_register(USERNAME, TAX, WEEKMONEY, EMAIL, PASSWORD):
     conn = sqlite3.connect('test.db')
-    BASE=price.get()
+    BASE = price.get()
     c = conn.cursor()
-    c.execute("INSERT INTO BTC (USERNAME, BASE,WEEKMONEY,EMAIL,PASSWORD,TAX) VALUES ('%s', '%s','%s','%s','%s','%s');"%(USERNAME,BASE,WEEKMONEY,EMAIL,PASSWORD,TAX))
+    c.execute(
+        "INSERT INTO BTC (USERNAME, BASE,WEEKMONEY,EMAIL,PASSWORD,TAX) VALUES ('%s', '%s','%s','%s','%s','%s');" % (
+        USERNAME, BASE, WEEKMONEY, EMAIL, PASSWORD, TAX))
     conn.commit()
     conn.close()
