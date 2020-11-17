@@ -1,10 +1,10 @@
-from Include.GlobalValues import url,sleep_times
+from Include.GlobalValues import BTCUrl,sleep_times
 import json,requests,datetime,time
 def price_monitor(price):
     global sleep_times,url
     while True:
         p = price.get()
-        res = json.loads(requests.get(url=url).text)
+        res = json.loads(requests.get(url=BTCUrl).text)
         if(res['status'].strip() == 'success'):
             for i in res['data']['prices']:
                 if p == 0:

@@ -13,12 +13,16 @@ register_html1 = """
        成功注册BTCMonitor账户！<br> 
        当前BTC价格为$
 """
-register_html2 = """,祝你好运！<br> 
+register_html2 = """
+<br><br>春风得意马蹄疾，一日看尽长安花
+<br>祝你好运
        <br><br><br><br>
     </p> """
 register_subject = '注册成功'
 
 
 #接口配置
-url = "https://sochain.com/api/v2/get_price/BTC/USD"
+BTCUrl = "https://sochain.com/api/v2/get_price/BTC/USD"
+GVZUrl = "https://sochain.com/api/v2/get_price/BTC/USD"
+VIXUrl = "https://sochain.com/api/v2/get_price/BTC/USD"
 sleep_times = 5
