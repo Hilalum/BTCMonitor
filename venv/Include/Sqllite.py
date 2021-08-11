@@ -1,11 +1,10 @@
 import sqlite3
 from Include.GlobalValues import price
-db = 'test.db'
+
+db_name = 'test.db'
 
 def init_sql():
-    conn = sqlite3.connect('test.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE if not exists BTC
+   execute_sql('''CREATE TABLE if not exists BTC
            (ID integer PRIMARY KEY autoincrement,
            USERNAME           TEXT    NOT NULL,
            MONEY            INT,
@@ -16,26 +15,23 @@ def init_sql():
            EMAIL       TEXT,
            PASSWORD    TEXT
            );''')
-    conn.commit()
-    conn.close()
-
 
 def insert_register(USERNAME, TAX, WEEKMONEY, EMAIL, PASSWORD):
-    conn = sqlite3.connect('test.db')
     BASE = price.get()
-    c = conn.cursor()
-    c.execute(
+    execute_sql(
         "INSERT INTO BTC (USERNAME, BASE,WEEKMONEY,EMAIL,PASSWORD,TAX) VALUES ('%s', '%s','%s','%s','%s','%s');" % (
             USERNAME, BASE, WEEKMONEY, EMAIL, PASSWORD, TAX))
-    conn.commit()
-    conn.close()
 
 
 def update(USERNAME, TAX, WEEKMONEY, EMAIL, PASSWORD):
-    conn = sqlite3.connect('test.db')
-    c = conn.cursor()
-    c.execute(
+    execute_sql(
         "UPDATE BTC set WEEKMONEY = '%s',EMAIL= '%s',TAX='%s' where USERNAME = '%s' and PASSWORD = '%s';" % (
             WEEKMONEY, EMAIL, TAX, USERNAME, PASSWORD))
+
+
+def execute_sql(sql):
+    conn = sqlite3.connect(db_name)
+    c = conn.cursor()
+    c.execute(sql)
     conn.commit()
     conn.close()

@@ -5,9 +5,8 @@ from Include.Monitor import *
 from Include.GlobalValues import price
 if __name__ == '__main__':
     init_sql()
-    price.put(0)
-    t = threading.Thread(target=price_monitor,args=(price,))
+    flask_run(8888, True)
+    t = threading.Thread(target=price_monitor)
     t.setDaemon(True)
     t.start()
-    flask_run(8888, True)
 
