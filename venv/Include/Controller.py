@@ -15,7 +15,6 @@ def register():
     if username == '' or pwd == '' or email == '' or weekmoney == '':
         res = {'msg': '缺失参数'}
         return json.dumps(res, ensure_ascii=False)
-    check_username(username)
     insert_register(username, tax, weekmoney, email, pwd)
     res = {'msg': '注册成功'}
     register_mail(email)

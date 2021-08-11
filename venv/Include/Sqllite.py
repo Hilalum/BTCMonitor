@@ -1,6 +1,6 @@
 import sqlite3
 from Include.GlobalValues import price
-
+db = 'test.db'
 
 def init_sql():
     conn = sqlite3.connect('test.db')
@@ -16,17 +16,6 @@ def init_sql():
            EMAIL       TEXT,
            PASSWORD    TEXT
            );''')
-    conn.commit()
-    conn.close()
-
-
-def check_username(USERNAME):
-    conn = sqlite3.connect('test.db')
-    BASE = price.get()
-    c = conn.cursor()
-    c.execute(
-        "select * from BTC where USERNAME = '%s';" % (USERNAME))
-    n = c.rowcount
     conn.commit()
     conn.close()
 
